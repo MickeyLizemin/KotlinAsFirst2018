@@ -68,7 +68,8 @@ fun seconds(hours: Int, minutes: Int, seconds: Int): Int =hours*3600+minutes*60+
  * Определить длину того же отрезка в метрах (в данном случае 18.98).
  * 1 сажень = 3 аршина = 48 вершков, 1 вершок = 4.445 см.
  */
-fun lengthInMeters(sagenes: Int, arshins: Int, vershoks: Int): Double = (sagenes*48*4.445+arshins*16*4.445+vershoks)/100
+fun lengthInMeters(sagenes: Int, arshins: Int, vershoks: Int):
+        Double = (sagenes*48*4.445+arshins*16*4.445+vershoks*4.445)/100.0
 
 /**
  * Тривиальная
@@ -93,7 +94,7 @@ fun trackLength(x1: Double, y1: Double, x2: Double, y2: Double): Double = sqrt(s
  * Определить третью цифру справа в этом числе (в данном случае 8).
  */
 fun thirdDigit(number: Int):
-        Int =number%1000%100
+        Int =number%1000/100
 
 /**
  * Простая
@@ -113,7 +114,7 @@ fun travelMinutes(hoursDepart: Int, minutesDepart: Int, hoursArrive: Int, minute
  * Например, 100 рублей под 10% годовых превратятся в 133.1 рубля
  */
 fun accountInThreeYears(initial: Int, percent: Int): Double =
-        (initial*(1+percent)*(1+percent)+(1+percent)).toDouble()
+        initial * Math.pow(1+(percent/100.0),3.0)
 
 /**
  * Простая
@@ -121,5 +122,8 @@ fun accountInThreeYears(initial: Int, percent: Int): Double =
  * Пользователь задает целое трехзначное число (например, 478).
  * Необходимо вывести число, полученное из заданного перестановкой цифр в обратном порядке (например, 874).
  */
-fun numberRevert(number: Int):
-        Int =(number%10)*100+(number%100/10)*10+number+number/100
+fun numberRevert(number: Int)=
+        number%10*100+(number%100/10)*10+number/100
+
+
+
