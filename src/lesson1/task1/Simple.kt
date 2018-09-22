@@ -1,4 +1,5 @@
 @file:Suppress("UNUSED_PARAMETER")
+
 package lesson1.task1
 
 import kotlinx.html.MATH
@@ -60,7 +61,7 @@ fun main(args: Array<String>) {
  * Рассчитать время в секундах, прошедшее с начала суток (30035 в данном случае).
  */
 fun seconds(hours: Int, minutes: Int, seconds: Int):
-        Int =hours*3600+minutes*60+seconds
+        Int = hours * 3600 + minutes * 60 + seconds
 
 /**
  * Тривиальная
@@ -70,7 +71,7 @@ fun seconds(hours: Int, minutes: Int, seconds: Int):
  * 1 сажень = 3 аршина = 48 вершков, 1 вершок = 4.445 см.
  */
 fun lengthInMeters(sagenes: Int, arshins: Int, vershoks: Int):
-        Double = (sagenes*48*4.445+arshins*16*4.445+vershoks*4.445)/100.0
+        Double = (sagenes * 48 * 4.445 + arshins * 16 * 4.445 + vershoks * 4.445) / 100.0
 
 /**
  * Тривиальная
@@ -88,7 +89,7 @@ fun angleInRadian(grad: Int, min: Int, sec: Int):
  * Например, расстояние между (3, 0) и (0, 4) равно 5
  */
 fun trackLength(x1: Double, y1: Double, x2: Double, y2: Double):
-        Double = sqrt(sqr(x1-x2) +sqr(y1-y2))
+        Double = sqrt(sqr(x1 - x2) + sqr(y1 - y2))
 
 /**
  * Простая
@@ -97,7 +98,7 @@ fun trackLength(x1: Double, y1: Double, x2: Double, y2: Double):
  * Определить третью цифру справа в этом числе (в данном случае 8).
  */
 fun thirdDigit(number: Int):
-        Int =number%1000/100
+        Int = number % 1000 / 100
 
 /**
  * Простая
@@ -107,7 +108,7 @@ fun thirdDigit(number: Int):
  * Определите время поезда в пути в минутах (в данном случае 216).
  */
 fun travelMinutes(hoursDepart: Int, minutesDepart: Int, hoursArrive: Int, minutesArrive: Int):
-        Int =hoursArrive*60+minutesArrive-hoursDepart*60-minutesDepart
+        Int = hoursArrive * 60 + minutesArrive - hoursDepart * 60 - minutesDepart
 
 /**
  * Простая
@@ -117,7 +118,7 @@ fun travelMinutes(hoursDepart: Int, minutesDepart: Int, hoursArrive: Int, minute
  * Например, 100 рублей под 10% годовых превратятся в 133.1 рубля
  */
 fun accountInThreeYears(initial: Int, percent: Int):
-        Double = initial * Math.pow(1+(percent/100.0),3.0)
+        Double = initial * Math.pow(1 + (percent / 100.0), 3.0)
 
 /**
  * Простая
@@ -125,8 +126,7 @@ fun accountInThreeYears(initial: Int, percent: Int):
  * Пользователь задает целое трехзначное число (например, 478).
  * Необходимо вывести число, полученное из заданного перестановкой цифр в обратном порядке (например, 874).
  */
-fun numberRevert(number: Int)
-        = number%10*100+(number%100/10)*10+number/100
+fun numberRevert(number: Int) = number % 10 * 100 + (number % 100 / 10) * 10 + number / 100
 
 
 
