@@ -123,12 +123,16 @@ fun whichRookThreatens(kingX: Int, kingY: Int,
 fun rookOrBishopThreatens(kingX: Int, kingY: Int,
                           rookX: Int, rookY: Int,
                           bishopX: Int, bishopY: Int): Int {
-    val x = Math.abs(kingX - bishopX)
-    val y = Math.abs(kingY - bishopY)
+    val kx = Math.abs(kingX)
+    val ky = Math.abs(kingY)
+    val rx = Math.abs(rookX)
+    val ry = Math.abs(rookY)
+    val bx = Math.abs(bishopX)
+    val by = Math.abs(bishopY)
     return when {
-        kingX != rookX && kingY != rookY && x != y -> 0
-        kingX == rookX && kingY == rookY && x != y -> 1
-        kingX != rookX && kingY != rookY && x == y -> 2
+        kx != rx && kx != bx && ky != ry && ky != by -> 0
+        kx == rx || kx == bx && ky != ry && ky != by -> 1
+        kx != rx && kx != bx && ky == ry || ky == by -> 2
         else -> 3
     }
 }
@@ -165,4 +169,14 @@ fun triangleKind(a: Double, b: Double, c: Double): Int {
  * Найти длину пересечения отрезков AB и CD.
  * Если пересечения нет, вернуть -1.
  */
-fun segmentLength(a: Int, b: Int, c: Int, d: Int): Int = TODO()
+fun segmentLength(a: Int, b: Int, c: Int, d: Int): Int = when {
+    a > c && b > a && b > c && d > b -> b - a
+    c > a && d > c && b > d -> d - c
+    c > a && b > c && d > b -> b - c
+    a == c && b == d -> 0
+    b > a && c < d && c > b -> -1
+    else ->  d - a
+}
+
+
+
