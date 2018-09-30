@@ -3,6 +3,9 @@
 package lesson2.task2
 
 import lesson1.task1.sqr
+import kotlin.math.max
+import kotlin.math.min
+import kotlin.math.sqrt
 
 /**
  * Пример
@@ -29,7 +32,7 @@ fun isNumberHappy(number: Int):
  * Считать, что ферзи не могут загораживать друг друга.
  */
 fun queenThreatens(x1: Int, y1: Int, x2: Int, y2: Int):
-        Boolean = x1 == x2 || y1 == y2 || Math.abs(x1-x2) == Math.abs(y1 -y2)
+        Boolean = x1 == x2 || y1 == y2 || Math.abs(x1 - x2) == Math.abs(y1 - y2)
 
 
 /**
@@ -38,21 +41,26 @@ fun queenThreatens(x1: Int, y1: Int, x2: Int, y2: Int):
  * Дан номер месяца (от 1 до 12 включительно) и год (положительный).
  * Вернуть число дней в этом месяце этого года по григорианскому календарю.
  */
-fun daysInMonth(month: Int, year: Int): Int =  TODO()
+fun daysInMonth(month: Int, year: Int): Int =
+        when {
+            month in 1..12 && month != 2 && month != 4 && month != 6 && month != 9 && month != 11 -> 31
+            month in 4..11 && month != 2 -> 30
+            (((year % 4 == 0) && (year % 100 != 0) || (year % 400 == 0))) && month == 2 -> 29
+            else -> 28
+        }
 
 
-
-
-    /**
-     * Средняя
-     *
-     * Проверить, лежит ли окружность с центром в (x1, y1) и радиусом r1 целиком внутри
-     * окружности с центром в (x2, y2) и радиусом r2.
-     * Вернуть true, если утверждение верно
-     */
+/**
+ * Средняя
+ *
+ * Проверить, лежит ли окружность с центром в (x1, y1) и радиусом r1 целиком внутри
+ * окружности с центром в (x2, y2) и радиусом r2.
+ * Вернуть true, если утверждение верно
+ */
 
 fun circleInside(x1: Double, y1: Double, r1: Double,
-                 x2: Double, y2: Double, r2: Double): Boolean = TODO()
+                 x2: Double, y2: Double, r2: Double): Boolean =
+        sqrt(sqr((y2 - y1)) + sqr((x2 - x1))) <= r2 - r1
 
 /**
  * Средняя
@@ -63,4 +71,9 @@ fun circleInside(x1: Double, y1: Double, r1: Double,
  * кирпич 4 х 4 х 4 пройдёт через отверстие 4 х 4.
  * Вернуть true, если кирпич пройдёт
  */
-fun brickPasses(a: Int, b: Int, c: Int, r: Int, s: Int): Boolean = TODO()
+fun brickPasses(a: Int, b: Int, c: Int, r: Int, s: Int): Boolean =
+        when {
+            maxOf(a, b, c) <= min(r, s) && minOf(a, b, c) <= min(r, s) -> true
+            minOf(a, b, c) <= min(r, s) && max(r, s) >= a + b + c - maxOf(a, b, c) - minOf(a, b, c) -> true
+            else -> false
+        }
