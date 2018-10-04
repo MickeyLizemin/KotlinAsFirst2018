@@ -75,7 +75,6 @@ fun digitNumber(n: Int): Int {
         count++
     }
     return count
-
 }
 
 /**
