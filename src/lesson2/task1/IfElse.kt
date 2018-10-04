@@ -2,6 +2,7 @@
 
 package lesson2.task1
 
+import com.sun.org.apache.xerces.internal.impl.xpath.regex.Match
 import kotlinx.html.MATH
 import lesson1.task1.discriminant
 import lesson1.task1.sqr
@@ -126,15 +127,15 @@ fun whichRookThreatens(kingX: Int, kingY: Int,
 fun rookOrBishopThreatens(kingX: Int, kingY: Int,
                           rookX: Int, rookY: Int,
                           bishopX: Int, bishopY: Int): Int {
-    val bishopX1 = Math.abs(kingX - bishopX)
-    val bishopY2 = Math.abs(kingY - bishopY)
+    val rook = kingX == rookX || kingY == rookY
+    val bishop1 = Math.abs(kingX - bishopX)
+    val bishop2 = Math.abs(kingY - bishopY)
+    val bishop = bishop1 == bishop2
     return when {
-        kingX != rookX && kingY != rookY && bishopX1 != bishopY2 -> 0
-        kingX == rookX || kingY == rookY && bishopX1 != bishopY2 -> 1
-        kingX != rookX && kingY != rookY && bishopX1 == bishopY2 -> 2
-        else -> 3
-
-
+        rook && bishop -> 3
+        rook -> 1
+        bishop -> 2
+        else -> 0
     }
 }
 
@@ -170,8 +171,8 @@ fun triangleKind(a: Double, b: Double, c: Double): Int {
  */
 fun segmentLength(a: Int, b: Int, c: Int, d: Int): Int =
         when {
-            c in a..b -> min(b, d ) - c
-            a in c..d -> min (b, d) - a
+            c in a..b -> min(b, d) - c
+            a in c..d -> min(b, d) - a
             else -> -1
         }
 
