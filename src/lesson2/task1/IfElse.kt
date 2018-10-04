@@ -6,6 +6,7 @@ import kotlinx.html.MATH
 import lesson1.task1.discriminant
 import lesson1.task1.sqr
 import kotlin.math.max
+import kotlin.math.min
 import kotlin.math.sqrt
 
 /**
@@ -146,15 +147,13 @@ fun rookOrBishopThreatens(kingX: Int, kingY: Int,
  * Если такой треугольник не существует, вернуть -1.
  */
 fun triangleKind(a: Double, b: Double, c: Double): Int {
-    val max1 = Math.max(a, b)
-    val max2 = Math.max(max1, c)
-    val min1 = Math.min(a, b)
-    val min2 = Math.min(min1, c)
-    val sqr1 = sqr(a + b + c - max2 - min2) + sqr(min2)
-    return if (a + b + c - max2 > max2) {
+    val max1 = maxOf(a, b, c)
+    val min1 = minOf(a, b, c)
+    val sqr1 = sqr(a + b + c - max1 - min1) + sqr(min1)
+    return if (a + b + c - max1 > max1) {
         when {
-            sqr(max2) < sqr1 -> 0
-            sqr(max2) == sqr1 -> 1
+            sqr(max1) < sqr1 -> 0
+            sqr(max1) == sqr1 -> 1
             else -> 2
         }
     } else -1
@@ -171,13 +170,10 @@ fun triangleKind(a: Double, b: Double, c: Double): Int {
  */
 fun segmentLength(a: Int, b: Int, c: Int, d: Int): Int =
         when {
-            c in a..b && d < b -> d - c
-            c in a..b && d > b -> b - c
-            a in c..d && b > d -> d - a
-            a in c..d && b < d -> b - a
+            c in a..b -> min(b, d ) - c
+            a in c..d -> min (b, d) - a
             else -> -1
         }
-
 
 
 
