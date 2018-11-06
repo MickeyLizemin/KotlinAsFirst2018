@@ -244,19 +244,14 @@ fun convert(n: Int, base: Int): List<Int> {
  * Например: n = 100, base = 4 -> 1210, n = 250, base = 14 -> 13c
  */
 fun convertToString(n: Int, base: Int): String {
-    val list = mutableListOf<Char>()
-    val list1 = convert(n, base)
-    if (n == 0)
-        return "0"
-    else {
-        for (element in list1) {
-            when {
-                element < 10 -> list.add('0' + element)
-                else -> list.add('a' + element - 10)
-            }
-        }
+    val lista = convert(n, base)
+    val listb = StringBuilder()
+    if (n == 0) return "0"
+    for (i in 0 until lista.size){
+        if (lista[i] > 9) listb.append('a' + lista[i] - 10)
+        else listb.append(lista[i])
     }
-    return list.joinToString { "" }
+    return listb.toString()
 }
 
 /**
