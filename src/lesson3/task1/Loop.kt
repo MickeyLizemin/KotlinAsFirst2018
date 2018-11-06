@@ -154,7 +154,14 @@ fun isCoPrime(m: Int, n: Int): Boolean {
  * то есть, существует ли такое целое k, что m <= k*k <= n.
  * Например, для интервала 21..28 21 <= 5*5 <= 28, а для интервала 51..61 квадрата не существует.
  */
-fun squareBetweenExists(m: Int, n: Int): Boolean = TODO()
+fun squareBetweenExists(m: Int, n: Int): Boolean {
+    var k = n
+    while (m <= k) {
+        if (k * k <= n) true
+        else k--
+    }
+    return true
+}
 
 /**
  * Средняя
@@ -177,7 +184,7 @@ fun collatzSteps(x: Int): Int {
     var n = x
     while (x > 0) {
         if (x / 2 == 0) n = x / 2
-            else n = 3 * x + 1
+        else n = 3 * x + 1
         i++
     }
     return i
@@ -231,8 +238,8 @@ fun cos(x: Double, eps: Double): Double {
  */
 fun revert(n: Int): Int {
     var number = 0
-    while (n >= 1){
-        number= n % 10 + number * 10
+    while (n >= 1) {
+        number = n % 10 + number * 10
     }
     return number
 }
