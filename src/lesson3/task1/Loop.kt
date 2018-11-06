@@ -231,9 +231,8 @@ fun cos(x: Double, eps: Double): Double {
  */
 fun revert(n: Int): Int {
     var number = 0
-    while (n >= 1) {
-        number = n % 10 + number * 10
-        n / 10
+    while (n >= 1){
+        number= n % 10 + number * 10
     }
     return number
 }
