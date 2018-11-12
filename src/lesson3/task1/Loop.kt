@@ -264,16 +264,7 @@ fun isPalindrome(n: Int): Boolean = n == revert(n)
  *
  * Использовать операции со строками в этой задаче запрещается.
  */
-fun hasDifferentDigits(n: Int): Boolean {
-    val str = n.toString()
-    if (Math.abs(n) >= 10) {
-        for (i in 0..str.length / 2) {
-            if (str[i] != str[i + 1])
-                return true
-        }
-    }
-    return false
-}
+fun hasDifferentDigits(n: Int): Boolean = TODO()
 
 /**
  * Сложная
