@@ -183,10 +183,10 @@ fun squareBetweenExists(m: Int, n: Int): Boolean {
 fun collatzSteps(x: Int): Int {
     var i = 0
     var n = x
-    while (x > 0) {
-        if (x / 2 == 0) n = x / 2
-        else n = 3 * x + 1
-        i++
+    while (n != 1) {
+        i += 1
+        if (n % 2 == 0) n = n / 2
+        else n = 3 * n + 1
     }
     return i
 }
